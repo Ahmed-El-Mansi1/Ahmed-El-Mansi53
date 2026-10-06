@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https://*.supabase.co; connect-src data: blob: https://*.supabase.co wss://*.supabase.co; base-uri 'none'; form-action 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>منصة المذكرات الذكية — مذكرتك… مذاكرتك أذكى</title>
+<meta name="description" content="اكتشف أفضل المذكرات التعليمية، عاين محتواها، اطلبها بسهولة، واحتفظ بها داخل مكتبتك الرقمية.">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#070d1f;--navy2:#111f45;--brand:#2563ff;--cyan:#22d3ee;--gold:#f5b942;--bg:#f8fafc;--card:#fff;--ink:#0f172a;--mut:#64748b;--line:#e2e8f0;--bad:#dc2626;--ok:#16a34a;--r:12px;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#0a1020;--card:#121a30;--ink:#e8edf8;--mut:#93a0bd;--line:#223055}}
+:root[data-theme=dark]{--bg:#0a1020;--card:#121a30;--ink:#e8edf8;--mut:#93a0bd;--line:#223055}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Cairo,"Segoe UI",system-ui,sans-serif;line-height:1.7}
+:focus-visible{outline:2px solid var(--brand);outline-offset:2px}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1180px;margin:auto;padding:0 16px}
+header{background:var(--navy);position:sticky;top:0;z-index:20}
+.bar{display:flex;align-items:center;gap:12px;height:62px;color:#fff}
+.logo{font-weight:800;font-size:18px;margin-inline-end:auto}
+nav{display:flex;gap:4px}
+nav a{padding:8px 12px;border-radius:10px;font-weight:600;font-size:14px;color:#ffffffcc;position:relative}
+nav a:hover,nav a.on{background:#ffffff1a;color:#fff}
+.cnt{background:var(--gold);color:#000;border-radius:99px;font-size:11px;padding:0 6px;margin-inline-start:4px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;height:42px;padding:0 18px;border:0;border-radius:var(--r);font:700 14px Cairo,sans-serif;background:var(--brand);color:#fff;cursor:pointer}
+.btn:hover{filter:brightness(1.08)}.btn:disabled{opacity:.5;cursor:not-allowed}
+.btn.sec{background:var(--card);color:var(--ink);border:1px solid var(--line)}
+.btn.bad{background:var(--bad)}.btn.sm{height:34px;padding:0 12px;font-size:13px}
+.hero{background:linear-gradient(180deg,var(--navy),var(--navy2));color:#fff;padding:48px 0}
+.hero h1{font-size:clamp(26px,5vw,44px);margin:6px 0;line-height:1.3}
+.hero p{max-width:560px;color:#ffffffbf;margin:8px 0 20px}
+.tag{color:var(--cyan);font-weight:700;font-size:14px}
+.search{display:flex;gap:8px;max-width:560px}
+input,select,textarea{width:100%;height:44px;border:1px solid var(--line);border-radius:var(--r);padding:0 14px;font:inherit;background:var(--card);color:var(--ink)}
+textarea{height:80px;padding:10px 14px}
+label{display:block;font-weight:600;font-size:14px;margin:12px 0 4px}
+.chips{display:flex;gap:8px;overflow-x:auto;padding:16px 0;scrollbar-width:none}
+.chip{flex:none;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:99px;padding:6px 16px;font:600 14px Cairo,sans-serif;cursor:pointer}
+.chip.on{background:var(--brand);border-color:var(--brand);color:#fff}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column}
+.cover{aspect-ratio:4/3;display:grid;place-items:center;color:#fff;font-weight:800;font-size:20px;text-align:center;padding:12px;background:linear-gradient(135deg,var(--c1),var(--c2))}
+.cbody{padding:14px;display:flex;flex-direction:column;gap:6px;flex:1}
+.meta{color:var(--mut);font-size:13px}
+.price{font-weight:800;font-size:18px}.old{color:var(--mut);text-decoration:line-through;font-size:13px;margin-inline-start:6px}
+.badge{display:inline-block;background:#2563ff1f;color:var(--brand);border-radius:99px;padding:1px 10px;font-size:12px;font-weight:700}
+.badge.ok{background:#16a34a1f;color:var(--ok)}.badge.bad{background:#dc26261f;color:var(--bad)}.badge.wn{background:#f5b9421f;color:#b7791f}
+.row{display:flex;gap:8px;margin-top:auto;padding-top:8px}
+section.pg{padding:28px 0}
+h2{margin:0 0 16px;font-size:22px}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;margin-bottom:16px}
+.empty{text-align:center;border:1px dashed var(--line);border-radius:16px;padding:48px 16px;background:var(--card)}
+.empty b{display:block;font-size:18px;margin:6px 0}.empty span{color:var(--mut)}
+.line{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid var(--line);align-items:center;flex-wrap:wrap}
+.line:last-child{border:0}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.tabs{display:flex;gap:8px;margin-bottom:16px;overflow-x:auto}
+.tot{font-size:20px;font-weight:800}
+.note{font-size:13px;color:var(--mut);background:#2563ff12;border-radius:10px;padding:10px 12px;margin-bottom:16px}
+#toasts{position:fixed;bottom:calc(16px + env(safe-area-inset-bottom,0px));inset-inline:16px;display:grid;gap:8px;justify-items:center;z-index:50;pointer-events:none}
+.toast{background:var(--navy);color:#fff;padding:10px 18px;border-radius:12px;font-weight:600;box-shadow:0 8px 24px #0004}
+.toast.err{background:var(--bad)}
+.pimg{width:64px;height:64px;object-fit:cover;border-radius:8px;cursor:pointer;border:1px solid var(--line)}
+.ov{position:fixed;inset:0;background:#000d;display:grid;place-items:center;z-index:60;padding:16px}.ov img{max-width:100%;max-height:90vh;border-radius:12px}
+footer{background:var(--navy);color:#ffffffa6;text-align:center;padding:24px 16px;font-size:13px;margin-top:32px}
+@media(max-width:700px){.two{grid-template-columns:1fr}.bar{height:auto;flex-wrap:wrap;padding:10px 0}nav{order:3;width:100%;overflow-x:auto}.search{flex-direction:column}}
+
+/* ---------- Motion ---------- */
+@keyframes up{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+@keyframes pop{0%{transform:scale(.6)}60%{transform:scale(1.25)}100%{transform:scale(1)}}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+@keyframes shift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+@keyframes toastIn{from{opacity:0;transform:translateY(18px) scale(.95)}to{opacity:1;transform:none}}
+.hero{background:linear-gradient(120deg,var(--navy),var(--navy2),#16307a,var(--navy2));background-size:300% 300%;animation:shift 14s ease infinite;position:relative;overflow:hidden}
+.hero .wrap{position:relative;z-index:1}
+.hero::before,.hero::after{content:"";position:absolute;border-radius:50%;filter:blur(40px);opacity:.35;pointer-events:none}
+.hero::before{width:260px;height:260px;background:var(--brand);top:-80px;inset-inline-end:-60px;animation:floaty 7s ease-in-out infinite}
+.hero::after{width:200px;height:200px;background:var(--cyan);bottom:-70px;inset-inline-start:10%;animation:floaty 9s ease-in-out infinite reverse}
+#app.anim .hero .wrap>*{animation:up .7s cubic-bezier(.2,.7,.2,1) both}
+#app.anim .hero .wrap>*:nth-child(2){animation-delay:.08s}#app.anim .hero .wrap>*:nth-child(3){animation-delay:.16s}#app.anim .hero .wrap>*:nth-child(4){animation-delay:.24s}
+#app.anim .card,#app.anim .panel,#app.anim .empty,#app.anim .chips,#app.anim h2{animation:up .55s cubic-bezier(.2,.7,.2,1) both}
+.card{transition:transform .3s cubic-bezier(.2,.7,.2,1),box-shadow .3s}
+.card:hover{transform:translateY(-6px);box-shadow:0 16px 32px #0b153033}
+.cover{transition:transform .6s cubic-bezier(.2,.7,.2,1)}.card:hover .cover{transform:scale(1.07)}
+.btn{transition:transform .15s,filter .2s,box-shadow .2s}.btn:hover{transform:translateY(-1px);box-shadow:0 6px 16px #2563ff40}.btn:active{transform:scale(.95)}
+.chip{transition:background .2s,color .2s,border-color .2s,transform .15s}.chip:hover{transform:translateY(-1px)}.chip:active{transform:scale(.95)}
+nav a{transition:background .2s,color .2s}
+.line{transition:background .2s}.panel .line:hover{background:#2563ff0d}
+.cnt{display:inline-block;animation:pop .45s}
+.badge{transition:transform .2s}.card:hover .badge{transform:scale(1.05)}
+.toast{animation:toastIn .4s cubic-bezier(.2,.8,.2,1)}
+.ov{animation:fade .2s}.ov img{animation:up .35s cubic-bezier(.2,.7,.2,1)}
+.pimg{transition:transform .2s}.pimg:hover{transform:scale(1.08)}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}[tabindex="-1"]:focus{outline:none}
+.tabs{display:flex!important;flex-wrap:wrap!important;overflow:visible!important;gap:8px}.tabs .chip{flex:1 1 auto;text-align:center;min-height:42px;display:inline-flex;align-items:center;justify-content:center}
+.cloud label[for=cp],.cloud #cp,.cloud label[for=np],.cloud #np,.cloud label[for=np2],.cloud #np2,.cloud .panel:has([data-act=bk]){display:none!important}
+</style>
+</head>
+<body>
+<header><div class="wrap bar">
+  <a class="logo" href="#/">📚 منصة المذكرات الذكية</a>
+  <nav aria-label="التنقل الرئيسي" id="nav"></nav>
+  <button class="btn sm sec" id="roleBtn"></button><button class="btn sm sec" id="themeBtn" aria-label="تبديل الوضع الليلي">🌓</button>
+</div></header>
+<main id="app" class="wrap"></main>
+<footer>© <span id="yr"></span> منصة المذكرات الذكية — مذكرتك… مذاكرتك أذكى.</footer>
+<div id="toasts" role="status" aria-live="polite"></div>
+<script>
+"use strict";
+const STAGES=["ابتدائي","إعدادي","ثانوي","بكالوريا","أزهري"];
+const SUBJECTS=["العربي","الإنجليزي","الرياضيات","الفيزياء","الكيمياء","الأحياء","البرمجة","الذكاء الاصطناعي","ICT","التاريخ","الجغرافيا"];
+const KEY="smartnotes.v1";
+// كتالوج المذكرات الجاهز: عدّل الأسعار هنا (price = السعر الحالي، old = قبل الخصم، 0 = بدون خصم)
+const SEED_V=1;const SEED=[{"id": "seed-prog-ai-part1", "title": "مذكرة البرمجة والذكاء الاصطناعي — الجزء الأول (الفصول 1–4)", "description": "شرح ومراجعة الفصول من 1 إلى 4 للصف الثاني بكالوريا.", "teacher": "مس/ حنان حمدي", "pages": 69, "stage": "بكالوريا", "subject": "البرمجة", "price": 120, "old": 150, "status": "PUBLISHED", "hasFile": true, "src": "prog-ai-part1.pdf", "at": 1759700000000}, {"id": "seed-ict-first-term-questions", "title": "أسئلة الترم الأول — ICT (الوحدات 1–4)", "description": "أسئلة اختيار من متعدد ومقالي على الوحدات من الأولى إلى الرابعة.", "teacher": "مس/ حنان حمدي", "pages": 27, "stage": "ثانوي", "subject": "ICT", "price": 50, "old": 70, "status": "PUBLISHED", "hasFile": true, "src": "ict-first-term-questions.pdf", "at": 1759700000001}, {"id": "seed-ict-first-term-answers", "title": "نموذج إجابة أسئلة الترم الأول — ICT", "description": "الإجابات النموذجية لأسئلة الترم الأول (الوحدات 1–4).", "teacher": "مس/ حنان حمدي", "pages": 15, "stage": "ثانوي", "subject": "ICT", "price": 30, "old": 40, "status": "PUBLISHED", "hasFile": true, "src": "ict-first-term-answers.pdf", "at": 1759700000002}, {"id": "seed-first-term-questions-bac1", "title": "مذكرة أسئلة الترم الأول — أولى بكالوريا", "description": "أسئلة الترم الأول للوحدات من الأولى إلى الرابعة بتصميم أولى بكالوريا.", "teacher": "مس/ حنان حمدي", "pages": 27, "stage": "بكالوريا", "subject": "ICT", "price": 50, "old": 70, "status": "PUBLISHED", "hasFile": true, "src": "first-term-questions-bac1.pdf", "at": 1759700000003}, {"id": "seed-smart-student-guide", "title": "دليل الطالب الذكي (تصميم ملون)", "description": "دليل شامل ملون يشرح الدروس بأهداف ونقاط مبسطة.", "teacher": "مس/ حنان حمدي", "pages": 83, "stage": "ثانوي", "subject": "ICT", "price": 130, "old": 160, "status": "PUBLISHED", "hasFile": true, "src": "smart-student-guide.pdf", "at": 1759700000004}, {"id": "seed-comprehensive-cover", "title": "مذكرة الأسئلة الشاملة — البرمجة والذكاء الاصطناعي (بالغلاف)", "description": "أسئلة اختيار من متعدد وصح وخطأ ومقالي على كل دروس الكتاب — الصف الأول الثانوي، الفصل الأول.", "teacher": "مس/ حنان حمدي", "pages": 39, "stage": "ثانوي", "subject": "البرمجة", "price": 70, "old": 90, "status": "PUBLISHED", "hasFile": true, "src": "comprehensive-cover.pdf", "at": 1759700000005}, {"id": "seed-comprehensive-blue", "title": "مذكرة الأسئلة الشاملة — البرمجة والذكاء الاصطناعي (التصميم الأزرق)", "description": "أسئلة اختيار من متعدد وصح وخطأ ومقالي على كل دروس الكتاب — الصف الأول الثانوي.", "teacher": "مس/ حنان حمدي", "pages": 38, "stage": "ثانوي", "subject": "البرمجة", "price": 65, "old": 85, "status": "PUBLISHED", "hasFile": true, "src": "comprehensive-blue.pdf", "at": 1759700000006}, {"id": "seed-comprehensive-new", "title": "مذكرة الأسئلة الشاملة — البرمجة والذكاء الاصطناعي (تصميم جديد)", "description": "أسئلة شاملة على دروس الكتاب — الصف الأول الثانوي، الفصل الأول.", "teacher": "مس/ حنان حمدي", "pages": 33, "stage": "ثانوي", "subject": "البرمجة", "price": 60, "old": 80, "status": "PUBLISHED", "hasFile": true, "src": "comprehensive-new.pdf", "at": 1759700000007}, {"id": "seed-ict-combined", "title": "مذكرة ICT الشاملة — الوحدات 1 إلى 13", "description": "شرح 62 درسًا مطابقًا لكتاب ICT الرسمي 2025–2026 — الصف الأول الثانوي، الترم الأول.", "teacher": "مس/ حنان حمدي", "pages": 43, "stage": "ثانوي", "subject": "ICT", "price": 80, "old": 100, "status": "PUBLISHED", "hasFile": true, "src": "ict-combined.pdf", "at": 1759700000008}, {"id": "seed-ict-combined-fixed", "title": "مذكرة ICT الشاملة — النسخة المصححة", "description": "النسخة المصححة والمكتملة (مع الوحدة 13) من مذكرة ICT الشاملة.", "teacher": "مس/ حنان حمدي", "pages": 43, "stage": "ثانوي", "subject": "ICT", "price": 80, "old": 100, "status": "PUBLISHED", "hasFile": true, "src": "ict-combined-fixed.pdf", "at": 1759700000009}, {"id": "seed-ict-study-guide", "title": "دليل مذاكرة ICT (تصميم احترافي)", "description": "دليل مذاكرة بتصميم احترافي يغطي دروس ICT للصف الأول الثانوي.", "teacher": "مس/ حنان حمدي", "pages": 73, "stage": "ثانوي", "subject": "ICT", "price": 120, "old": 150, "status": "PUBLISHED", "hasFile": true, "src": "ict-study-guide.pdf", "at": 1759700000010}];
+function seedNotes(){if(CLOUD||S.seedV>=SEED_V)return;SEED.forEach(n=>{if(!S.notes.some(x=>x.id===n.id))S.notes.push({...n})});S.seedV=SEED_V;save()}
+// ===== إعداد السيرفر (Supabase) — املأ القيمتين دول بعد ما تعمل المشروع. لو سبتهم فاضيين الموقع بيشتغل محليًا زي الأول =====
+const SUPABASE_URL="";   // مثال: https://abcdxyz.supabase.co
+const SUPABASE_KEY="";   // anon public key فقط (مش service_role)
+const CLOUD=!!(SUPABASE_URL&&SUPABASE_KEY);
+const ADMIN_HASH="e60ea2bb46a85910d45e1080890b3ddd73a70c222bb6034a2290f792fdb2b4cb";
+const $=s=>document.querySelector(s);
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const egp=n=>new Intl.NumberFormat("ar-EG",{style:"currency",currency:"EGP",maximumFractionDigits:0}).format(n);
+const uid=()=>globalThis.crypto?.randomUUID?crypto.randomUUID():Date.now().toString(36)+Math.random().toString(36).slice(2,10);
+const mem=new Map();
+const idb=()=>new Promise((res,rej)=>{const r=indexedDB.open("smartnotes-files",1);r.onupgradeneeded=()=>r.result.createObjectStore("f");r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error)});
+const _fput=async(k,v)=>{const d=await idb();return new Promise((res,rej)=>{const t=d.transaction("f","readwrite");t.objectStore("f").put(v,k);t.oncomplete=res;t.onerror=()=>rej(t.error)})};
+const _fget=async k=>{const d=await idb();return new Promise((res,rej)=>{const r=d.transaction("f").objectStore("f").get(k);r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error)})};
+const fdel=async k=>{mem.delete(k);try{const d=await idb();await new Promise(res=>{const t=d.transaction("f","readwrite");t.objectStore("f").delete(k);t.oncomplete=res;t.onerror=res})}catch{}};
+let S,bad=0,lockUntil=0,draft={},af={q:"",s:""},lim={home:12,orders:15,notes:15};
+function load(){try{S=JSON.parse(localStorage.getItem(KEY))}catch{}
+ S=Object.assign({requests:[],waNum:"",notes:[],orders:[],coupons:[],cart:[],fav:[],library:[],admin:false,commission:10,payNum:"01105187060",pay:"حوّل إجمالي الطلب إلى الرقم أعلاه، ثم ارفع صورة التحويل من صفحة طلباتي."},S||{})}
+function fixPay(){if(!S.pay||S.pay.includes("يحدد المدير"))S.pay="حوّل إجمالي الطلب إلى الرقم أعلاه، ثم ارفع صورة التحويل من صفحة طلباتي."}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(CLOUD?{cart:S.cart,lock:S.lock,v:2}:{...S,admin:false}));$("#saveWarn")?.remove();return true}catch{toast("تعذر الحفظ في هذا المتصفح (التخزين ممتلئ أو غير مسموح)","err");if(!$("#saveWarn")){const d=document.createElement("div");d.id="saveWarn";d.setAttribute("role","alert");d.style.cssText="position:sticky;top:62px;z-index:19;background:#dc2626;color:#fff;padding:8px 16px;text-align:center;font-weight:700";d.textContent="⚠️ البيانات لا تُحفظ في هذا المتصفح. لا تعتمد عليها وخذ نسخة احتياطية.";document.querySelector("header").after(d)}return false}}
+const nrm=x=>String(x).normalize("NFKC").replace(/[\u064B-\u065F\u0670\u0640]/g,"").replace(/[أإآٱ]/g,"ا").replace(/ى/g,"ي").replace(/ة/g,"ه").toLowerCase();
+function sanitize(){["notes","orders","coupons","cart","fav","library","requests"].forEach(k=>{S[k]=Array.isArray(S[k])?S[k]:[]});
+ S.notes=S.notes.filter(n=>n&&typeof n==="object"&&n.id);S.orders=S.orders.filter(o=>o&&typeof o==="object"&&o.id);S.coupons=S.coupons.filter(c=>c&&typeof c==="object"&&c.code);S.requests=S.requests.filter(r=>r&&typeof r==="object"&&r.id);
+ ["cart","fav","library"].forEach(k=>S[k]=S[k].filter(x=>typeof x==="string"));
+ S.notes.forEach(n=>{n.price=Math.max(0,+n.price||0);n.old=+n.old||0;n.pages=+n.pages||0});
+ S.orders.forEach(o=>{if(!stLabel[o.status])o.status="CANCELLED";o.items=Array.isArray(o.items)?o.items:[];o.total=+o.total||0;o.hist=Array.isArray(o.hist)?o.hist:[]});
+ S.requests.forEach(r=>{if(!rqLabel[r.status])r.status="NEW"});S.lock=S.lock&&typeof S.lock==="object"?S.lock:{};S.audit=Array.isArray(S.audit)?S.audit.slice(-300):[];S.commission=Math.min(100,Math.max(0,+S.commission||0));S.v=2}
+function expire(){const lim=Date.now()-48*36e5;let ch=false;S.orders.forEach(o=>{if(o.status==="PENDING"&&o.at<lim){move(o,"CANCELLED");o.reason="انتهت مهلة الدفع (48 ساعة)";ch=true}});if(ch)save()}
+function toast(m,t=""){const d=document.createElement("div");d.className="toast "+t;d.textContent=m;$("#toasts").append(d);setTimeout(()=>d.remove(),2800)}
+const pwNorm=x=>String(x).normalize("NFKC").replace(/[\u200b-\u200f\u202a-\u202e\u2066-\u2069\ufeff\s]/g,"").replace(/[٠-٩]/g,d=>"٠١٢٣٤٥٦٧٨٩".indexOf(d));
+function sha256js(str){const b=[...new TextEncoder().encode(str)],l=b.length*8;b.push(128);while(b.length%64!==56)b.push(0);for(let i=7;i>=0;i--)b.push(i>3?0:(l>>>(i*8))&255);
+ const K=[],H=[];let n=2,c=0;while(c<64){let p=true;for(let d=2;d*d<=n;d++)if(n%d===0){p=false;break}if(p){if(c<8)H.push(Math.floor((Math.sqrt(n)%1)*2**32));K.push(Math.floor((Math.cbrt(n)%1)*2**32));c++}n++}
+ const rr=(x,k)=>(x>>>k)|(x<<(32-k));
+ for(let o=0;o<b.length;o+=64){const w=[];for(let i=0;i<16;i++)w[i]=(b[o+i*4]<<24)|(b[o+i*4+1]<<16)|(b[o+i*4+2]<<8)|b[o+i*4+3];
+  for(let i=16;i<64;i++){const s0=rr(w[i-15],7)^rr(w[i-15],18)^(w[i-15]>>>3),s1=rr(w[i-2],17)^rr(w[i-2],19)^(w[i-2]>>>10);w[i]=(w[i-16]+s0+w[i-7]+s1)|0}
+  let[a,bb,cc,d,e,f,g,h]=H;
+  for(let i=0;i<64;i++){const S1=rr(e,6)^rr(e,11)^rr(e,25),ch=(e&f)^(~e&g),t1=(h+S1+ch+K[i]+w[i])|0,S0=rr(a,2)^rr(a,13)^rr(a,22),mj=(a&bb)^(a&cc)^(bb&cc),t2=(S0+mj)|0;h=g;g=f;f=e;e=(d+t1)|0;d=cc;cc=bb;bb=a;a=(t1+t2)|0}
+  [a,bb,cc,d,e,f,g,h].forEach((v,i)=>H[i]=(H[i]+v)|0)}
+ return H.map(x=>(x>>>0).toString(16).padStart(8,"0")).join("")}
+async function sha(s){try{if(globalThis.crypto?.subtle){const b=await crypto.subtle.digest("SHA-256",new TextEncoder().encode(s));return[...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,"0")).join("")}}catch{}return sha256js(s)}
+const grad=t=>{let h=0;for(const c of t)h=(h*31+c.charCodeAt(0))%360;return`--c1:hsl(${h} 70% 38%);--c2:hsl(${(h+50)%360} 70% 28%)`};
+const stLabel={PENDING:["بانتظار الدفع","wn"],PAYMENT_REVIEW:["قيد مراجعة الدفع","wn"],COMPLETED:["مكتمل","ok"],REJECTED:["مرفوض","bad"],CANCELLED:["ملغي","bad"],REFUNDED:["مُسترجع","bad"]};
+const rqLabel={NEW:["جديد","wn"],DONE:["تمت الإضافة","ok"],NO:["غير متاح","bad"]};
+const waIntl=n=>"20"+String(n).replace(/\D/g,"").replace(/^0/,"");
+// State machine: allowed transitions
+const NEXT={PENDING:["PAYMENT_REVIEW","CANCELLED"],PAYMENT_REVIEW:["COMPLETED","REJECTED"],REJECTED:["PAYMENT_REVIEW"],COMPLETED:["REFUNDED"],REFUNDED:[],CANCELLED:[]};
+function move(o,to){if(!NEXT[o.status].includes(to)){toast("انتقال غير مسموح","err");return false}(o.hist=o.hist||[]).push({s:to,at:Date.now()});log("طلب #"+o.num,stLabel[to][0]);o.status=to;return true}
+const payBox=()=>`<div class="note"><b>رقم التحويل (فودافون كاش):</b><div style="display:flex;align-items:center;gap:10px;margin-top:6px;flex-wrap:wrap"><span dir="ltr" style="font-weight:800;font-size:20px;color:var(--ink)">${esc(S.payNum)}</span><button type="button" class="btn sm sec" data-act="copy">نسخ الرقم</button></div></div>`;
+function empty(t,d,a=""){return`<div class="empty"><div aria-hidden="true" style="font-size:36px">📭</div><b>${t}</b><span>${d}</span>${a?`<div style="margin-top:14px">${a}</div>`:""}</div>`}
+const cuse=code=>S.orders.filter(o=>o.coupon===code&&["PENDING","PAYMENT_REVIEW","COMPLETED"].includes(o.status)).length;
+const validCart=()=>S.cart.filter(id=>S.notes.some(n=>n.id===id&&n.status==="PUBLISHED"&&!S.library.includes(id)));
+function priceOf(id){const p=S.notes.find(n=>n.id===id)?.price??0,l=S.lock?.[id];return CLOUD||l==null?p:Math.min(l,p)} // always read from stored catalog, never from UI
+function calc(code){if(CLOUD)return cloudCalc(code);const sub=validCart().reduce((a,id)=>a+priceOf(id),0);let disc=0,err="",c=null;
+ if(code){c=S.coupons.find(x=>x.code===code.trim().toUpperCase());const now=Date.now();
+  if(!c||!c.active)err="الكوبون غير صالح";else if(c.expires&&now>new Date(c.expires+"T23:59:59"))err="انتهت صلاحية الكوبون";
+  else if(sub<c.min)err=`الحد الأدنى للطلب ${egp(c.min)}`;
+  else if(c.limit&&cuse(c.code)>=c.limit)err="تم استنفاد الكوبون";
+  else{disc=c.type==="pct"?Math.round(sub*c.value/100):Math.min(c.value,sub);if(c.max)disc=Math.min(disc,c.max)}
+  if(err){disc=0;c=null}}
+ return{sub,disc,total:sub-disc,err,c}}
+function card(n){const off=n.old>n.price?Math.round((n.old-n.price)/n.old*100):0;const owned=S.library.includes(n.id);
+ return`<article class="card"><div class="cover" style="${grad(n.title)}">${esc(n.title)}</div><div class="cbody">
+ <div><span class="badge">${esc(n.stage)}</span> <span class="badge">${esc(n.subject)}</span>${off?` <span class="badge ok">خصم ${off}%</span>`:""}</div>
+ <strong>${esc(n.title)}</strong><div class="meta">${esc(n.teacher)} · ${n.pages} صفحة</div>
+ <div><span class="price">${egp(n.price)}</span>${off?`<span class="old">${egp(n.old)}</span>`:""}</div>
+ <div class="row"><button class="btn sm" data-act="${owned?"open":"add"}" data-id="${n.id}">${owned?"فتح":"أضف للسلة"}</button>
+ <button class="btn sm sec" data-act="det" data-id="${n.id}">تفاصيل</button>
+ <button class="btn sm sec" data-act="fav" data-id="${n.id}" aria-label="${S.fav.includes(n.id)?"إزالة من المفضلة":"إضافة للمفضلة"}" aria-pressed="${S.fav.includes(n.id)}">${S.fav.includes(n.id)?"❤️":"🤍"}</button></div></div></article>`}
+// ---------- Views ----------
+function log(act,d){S.audit=Array.isArray(S.audit)?S.audit:[];S.audit.push({at:Date.now(),act,d:String(d??"")});if(S.audit.length>300)S.audit=S.audit.slice(-300)}
+const adminOrders=()=>{const q=nrm(af.q||""),st=af.s||"";return[...S.orders].reverse().filter(o=>(!st||o.status===st)&&(!q||nrm([o.num,o.name,o.phone].join(" ")).includes(q)))};
+const ordersFilter=()=>`<form class="panel" id="of"><div class="search"><input id="oq" aria-label="بحث في الطلبات" placeholder="رقم الطلب أو الاسم أو الهاتف" value="${esc(af.q)}"><select id="os" aria-label="الحالة"><option value="">كل الحالات</option>${Object.entries(stLabel).map(([k,x])=>`<option value="${k}"${af.s===k?" selected":""}>${x[0]}</option>`).join("")}</select><button class="btn">بحث</button></div><p class="meta" style="margin:8px 0 0">${adminOrders().length} طلب</p></form>`;
+const moreBtn=(k,n)=>`<div style="text-align:center;margin-top:16px"><button type="button" class="btn sec" data-act="more" data-k="${k}">عرض المزيد (${n})</button></div>`;
+const V={};
+V.home=q=>{const text=(q.q||"").trim(),st=q.stage||"";
+ const list=S.notes.filter(n=>n.status==="PUBLISHED"&&(!st||n.stage===st)&&(!text||nrm([n.title,n.teacher,n.subject,n.stage].join(" ")).includes(nrm(text))));
+ return`<div class="hero" style="margin:0 -16px;padding-inline:16px"><div class="wrap" style="padding:0"><span class="tag">مذكرتك… مذاكرتك أذكى</span>
+ <h1>كل مذكراتك الدراسية في مكان واحد 📚</h1><p>اكتشف أفضل المذكرات التعليمية، عاين محتواها، اطلبها بسهولة، واحتفظ بها داخل مكتبتك الرقمية.</p>
+ <form class="search" role="search" id="sf"><label for="q" class="sr">بحث</label><input id="q" type="search" placeholder="ابحث عن مذكرة، مادة، مدرس، أو مرحلة..." value="${esc(text)}" list="sug" autocomplete="off">
+ <datalist id="sug">${[...new Set(S.notes.flatMap(n=>[n.title,n.subject,n.teacher]))].map(x=>`<option value="${esc(x)}">`).join("")}</datalist><button class="btn">بحث</button></form></div></div>
+ <section class="pg"><div class="chips" role="group" aria-label="المراحل"><button class="chip ${st?"":"on"}" data-stage="">الكل</button>${STAGES.map(s=>`<button class="chip ${st===s?"on":""}" data-stage="${s}">${s}</button>`).join("")}</div>
+ <h2>${text||st?"نتائج البحث":"أحدث المذكرات"}</h2>
+ ${list.length?`<div class="grid">${list.slice(0,lim.home).map(card).join("")}</div>${list.length>lim.home?moreBtn("home",list.length-lim.home):""}`:
+  S.notes.length?empty("لا توجد نتائج","جرّب كلمات أخرى أو غيّر المرحلة."):empty("لا توجد مذكرات منشورة بعد","ستظهر المذكرات هنا فور نشرها من لوحة الإدارة.")}</section>`};
+V.cart=q=>{{const vc=validCart();if(vc.length!==S.cart.length){S.cart=vc;save()}}const code=q.code||"";const c=calc(code);
+ if(!S.cart.length)return`<section class="pg"><h2>السلة</h2>${empty("سلتك فارغة","أضف مذكرات لتبدأ الشراء.",`<a class="btn" href="#/">استكشف المذكرات</a>`)}</section>`;
+ return`<section class="pg"><h2>السلة</h2><div class="panel">${S.cart.map(id=>{const n=S.notes.find(x=>x.id===id);return n?`<div class="line"><div><strong>${esc(n.title)}</strong><div class="meta">${esc(n.teacher)}</div></div><div>${egp(priceOf(id))} <button class="btn sm sec" data-act="rm" data-id="${id}">حذف</button></div></div>`:""}).join("")}</div>
+ <div class="panel"><label for="cc">كوبون خصم</label><div class="search"><input id="cc" value="${esc(code)}" placeholder="أدخل الكود"><button type="button" class="btn sec" id="applyC" data-act="apply">تطبيق</button></div>
+ ${c.err?`<p style="color:var(--bad);margin:8px 0 0">${c.err}</p>`:""}
+ <div class="line"><span>المجموع</span><span>${egp(c.sub)}</span></div><div class="line"><span>الخصم</span><span>- ${egp(c.disc)}</span></div><div class="line"><span class="tot">الإجمالي</span><span class="tot">${egp(c.total)}</span></div></div>
+ ${payBox()}
+ <form class="panel" id="co" data-code="${esc(c.c?.code||"")}"><h3 style="margin:0">بيانات الطلب</h3><label for="nm">الاسم</label><input id="nm" required minlength="3" value="${esc(draft.nm||"")}"><div class="two"><div><label for="ph">الهاتف</label><input id="ph" required inputmode="tel" pattern="01[0-9]{9}" title="رقم مصري من 11 رقمًا" value="${esc(draft.ph||"")}"></div><div><label for="em">البريد (اختياري)</label><input id="em" type="email" value="${esc(draft.em||"")}"></div></div>
+ ${payBox()}<p class="note">${esc(S.pay)}</p><button class="btn" id="coBtn" style="width:100%">تأكيد الطلب</button></form></section>`};
+V.orders=()=>{const l=[...S.orders].reverse();return`<section class="pg"><h2>طلباتي</h2>${l.length?l.map(o=>{const[t,k]=stLabel[o.status];return`<div class="panel"><div class="line"><strong>طلب #${o.num}</strong><span class="badge ${k}">${t}</span></div>
+ <div class="meta">${o.items.map(id=>esc(o.lines?.find(l=>l.id===id)?.title||S.notes.find(n=>n.id===id)?.title||"مذكرة محذوفة")).join("، ")}</div><div class="line"><span>الإجمالي</span><strong>${egp(o.total)}</strong></div>
+ ${(o.proofImg||o.hasProof)?`<div style="margin:8px 0"><div class="meta">صورة التحويل المرفوعة</div><img class="pimg" src="${o.proofImg||""}" data-pid="${o.id}" tabindex="0" role="button" data-act="zoom" data-id="${o.id}" alt="صورة التحويل"><div class="meta" style="margin-top:6px">✅ تم إرسال الصورة للمراجعة${o.sentAt?" — "+new Date(o.sentAt).toLocaleString("ar-EG"):""}</div>${o.status==="PAYMENT_REVIEW"&&!CLOUD?`<button class="btn sm sec" data-act="wa" data-id="${o.id}" style="margin-top:6px">إرسال نسخة للإدارة على واتساب</button>`:""}</div>`:""}${o.reason&&o.status==="REJECTED"?`<p style="color:var(--bad)">سبب الرفض: ${esc(o.reason)}</p>`:""}
+ ${["PENDING","REJECTED"].includes(o.status)?`${payBox()}<label for="pf${o.id}">صورة التحويل</label><input type="file" id="pf${o.id}" accept="image/*" data-proof="${o.id}"> <button class="btn sm bad" data-act="cancel" data-id="${o.id}" style="margin-top:8px">إلغاء الطلب</button>`:""}</div>`}).join(""):empty("لا توجد طلبات","ستظهر طلباتك هنا بعد إتمام أول عملية شراء.")}</section>`};
+V.library=()=>{const l=S.library.map(id=>S.notes.find(n=>n.id===id)).filter(Boolean);return`<section class="pg"><h2>مكتبتي</h2>${l.length?`<div class="grid">${l.map(n=>`<article class="card"><div class="cover" style="${grad(n.title)}">${esc(n.title)}</div><div class="cbody"><strong>${esc(n.title)}</strong><div class="meta">${esc(n.teacher)}</div><div class="row"><button class="btn sm" data-act="open" data-id="${n.id}">فتح</button><button class="btn sm sec" data-act="dl" data-id="${n.id}">تنزيل</button></div></div></article>`).join("")}</div>`:empty("مكتبتك فارغة","المذكرات المشتراة تظهر هنا بعد اعتماد الدفع.",`<a class="btn" href="#/">استكشف المذكرات</a>`)}</section>`};
+V.favs=()=>{const l=S.fav.map(id=>S.notes.find(n=>n.id===id)).filter(Boolean);return`<section class="pg"><h2>المفضلة</h2>${l.length?`<div class="grid">${l.map(card).join("")}</div>`:empty("لا توجد عناصر محفوظة","اضغط على القلب لحفظ المذكرات هنا.")}</section>`};
+V.request=()=>{const l=[...S.requests].reverse();return`<section class="pg"><h2>اطلب مذكرة</h2><p class="note">مش لاقي المذكرة اللي محتاجها؟ اكتب طلبك وهتراجعه الإدارة.</p>
+ <form class="panel" id="rf"><div class="two"><div><label for="rqn">الاسم</label><input id="rqn" required minlength="3"></div><div><label for="rqp">الهاتف</label><input id="rqp" required inputmode="tel" pattern="01[0-9]{9}" title="رقم مصري من 11 رقمًا"></div>
+ <div><label for="rqst">المرحلة</label><select id="rqst">${STAGES.map(s=>`<option>${s}</option>`).join("")}</select></div><div><label for="rqsb">المادة</label><select id="rqsb">${SUBJECTS.map(s=>`<option>${s}</option>`).join("")}</select></div></div>
+ <label for="rqd">تفاصيل المذكرة المطلوبة</label><textarea id="rqd" required minlength="5" placeholder="اسم المدرس، الفصل الدراسي، أي تفاصيل..."></textarea><button class="btn" style="margin-top:14px">إرسال الطلب</button></form>
+ ${l.length?`<h3>طلباتي السابقة</h3><div class="panel">${l.map(r=>{const[t,k]=rqLabel[r.status];return`<div class="line"><div><strong>${esc(r.subject)} — ${esc(r.stage)}</strong><div class="meta">${esc(r.details)}</div>${r.reply?`<div class="meta">رد الإدارة: ${esc(r.reply)}</div>`:""}</div><span class="badge ${k}">${t}</span></div>`}).join("")}</div>`:""}</section>`};
+V.admin=q=>{if(CLOUD&&!S.admin)return`<section class="pg">${empty("للإدارة فقط",SES?"حسابك ليس حساب إدارة.":"سجّل دخولك بحساب الإدارة.",SES?"":'<a class="btn" href="#/auth">تسجيل الدخول</a>')}</section>`;if(!S.admin)return`<section class="pg"><div class="panel" style="max-width:420px;margin:auto"><h2>دخول الإدارة</h2><p class="note">أدخل كلمة مرور الإدارة للمتابعة.</p><form id="af"><label for="ap">كلمة المرور</label><div style="display:flex;gap:8px"><input id="ap" type="password" required autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" dir="ltr"><button type="button" class="btn sec" data-act="eye" style="flex:none">إظهار</button></div><button class="btn" style="width:100%;margin-top:12px">دخول</button></form></div></section>`;
+ const tab=q.tab||(S.notes.length?"notes":"add");const pend=S.orders.filter(o=>o.status==="PAYMENT_REVIEW").length;const rq=S.requests.filter(r=>r.status==="NEW").length;
+ const tabs=[["add","إضافة مذكرة"],["notes","المذكرات"],["orders",`طلبات الشراء${pend?` (${pend})`:""}`],["reqs",`طلبات الطلاب${rq?` (${rq})`:""}`],["audit","سجل العمليات"],["coupons","الكوبونات"],["stats","الإحصائيات"],["settings","الإعدادات"]];
+ let body="";
+ if(tab==="add")body=`<form class="panel" id="nf"><h3 style="margin:0">إضافة مذكرة</h3><label for="t">العنوان</label><input id="t" required minlength="4"><label for="d">الوصف</label><textarea id="d" required></textarea>
+ <div class="two"><div><label for="tc">المدرس</label><input id="tc" required></div><div><label for="pg">عدد الصفحات</label><input id="pg" type="number" min="1" required></div>
+ <div><label for="stg">المرحلة</label><select id="stg">${STAGES.map(s=>`<option>${s}</option>`)}</select></div><div><label for="sb">المادة</label><select id="sb">${SUBJECTS.map(s=>`<option>${s}</option>`)}</select></div>
+ <div><label for="pr">السعر (ج.م)</label><input id="pr" type="number" min="1" required></div><div><label for="op">السعر قبل الخصم (اختياري)</label><input id="op" type="number" min="0"></div></div>
+ <label for="pdf">ملف PDF (حتى 15MB)</label><input id="pdf" type="file" accept="application/pdf" required><button class="btn" style="margin-top:14px">نشر المذكرة</button></form>`;
+ if(tab==="notes")body=`<a class="btn" href="#/admin?tab=add" style="margin-bottom:12px">+ إضافة مذكرة جديدة</a><div class="panel">${S.notes.length?S.notes.slice(0,lim.notes).map(n=>`<div class="line"><span>${esc(n.title)} <span class="badge ${n.status==="PUBLISHED"?"ok":"wn"}">${n.status==="PUBLISHED"?"منشورة":"غير منشورة"}</span></span><span><label class="btn sm sec" style="margin:0">${n.hasFile?"استبدال PDF":"رفع PDF"}<input type="file" accept="application/pdf" data-pdf="${n.id}" hidden></label> <button class="btn sm sec" data-act="tog" data-id="${n.id}">${n.status==="PUBLISHED"?"إيقاف":"نشر"}</button> <button class="btn sm bad" data-act="del" data-id="${n.id}">حذف</button></span></div>`).join(""):empty("لا توجد مذكرات","أضف أول مذكرة من تبويب «إضافة مذكرة».")}</div>`;
+ if(tab==="orders")body=`${ordersFilter()}<div class="panel">${S.orders.length?adminOrders().slice(0,lim.orders).map(o=>{const[t,k]=stLabel[o.status];return`<div class="line"><div><strong>#${o.num}</strong> — ${esc(o.name)} · ${esc(o.phone)}<div class="meta">${egp(o.total)} ${o.proof?"· إثبات: "+esc(o.proof):"· لم يُرفع إثبات"}${o.sentAt?" · وصل "+new Date(o.sentAt).toLocaleString("ar-EG"):""}</div><div class="meta">${(o.hist||[]).map(h=>stLabel[h.s][0]).join(" ← ")}</div>${(o.proofImg||o.hasProof)?`<img class="pimg" src="${o.proofImg||""}" data-pid="${o.id}" tabindex="0" role="button" data-act="zoom" data-id="${o.id}" alt="صورة التحويل">`:""}</div><div><span class="badge ${k}">${t}</span> ${o.status==="PAYMENT_REVIEW"?`<button class="btn sm" data-act="ok" data-id="${o.id}">موافقة</button> <button class="btn sm bad" data-act="no" data-id="${o.id}">رفض</button>`:""}${o.status==="COMPLETED"?`<button class="btn sm bad" data-act="refund" data-id="${o.id}">استرجاع</button>`:""}</div></div>`}).join(""):empty("لا توجد طلبات","ستظهر الطلبات هنا فور إنشائها.")}</div>`;
+ if(tab==="reqs")body=`<div class="panel">${S.requests.length?[...S.requests].reverse().map(r=>{const[t,k]=rqLabel[r.status];return`<div class="line"><div><strong>${esc(r.name)}</strong> · ${esc(r.phone)}<div class="meta">${esc(r.stage)} — ${esc(r.subject)} · ${new Date(r.at).toLocaleDateString("ar-EG")}</div><div>${esc(r.details)}</div>${r.reply?`<div class="meta">الرد: ${esc(r.reply)}</div>`:""}</div><div><span class="badge ${k}">${t}</span> ${r.status==="NEW"?`<button class="btn sm" data-act="rqok" data-id="${r.id}">تمت الإضافة</button> <button class="btn sm sec" data-act="rqno" data-id="${r.id}">غير متاح</button> `:""}<button class="btn sm bad" data-act="rqdel" data-id="${r.id}">حذف</button></div></div>`}).join(""):empty("لا توجد طلبات من الطلاب","ستظهر هنا الطلبات التي يرسلها الطلاب من صفحة «اطلب مذكرة».")}</div>`;
+ if(tab==="audit")body=`<div class="panel"><p class="meta">السجل محفوظ في هذا المتصفح فقط، ويمكن تعديله. ليس بديلًا عن سجل على سيرفر.</p>${S.audit.length?[...S.audit].reverse().map(a=>`<div class="line"><div><strong>${esc(a.act)}</strong><div class="meta">${esc(a.d)}</div></div><span class="meta">${new Date(a.at).toLocaleString("ar-EG")}</span></div>`).join(""):empty("لا توجد عمليات","ستظهر هنا عمليات الإدارة.")}</div>`;
+ if(tab==="coupons")body=`<form class="panel" id="cf"><h3 style="margin:0">كوبون جديد</h3><div class="two"><div><label for="cd">الكود</label><input id="cd" required pattern="[A-Za-z0-9]{3,20}"></div><div><label for="ct">النوع</label><select id="ct"><option value="pct">نسبة %</option><option value="fix">مبلغ ثابت</option></select></div>
+ <div><label for="cv">القيمة</label><input id="cv" type="number" min="1" required></div><div><label for="cm">حد أدنى للطلب</label><input id="cm" type="number" min="0" value="0"></div><div><label for="cx">أقصى خصم</label><input id="cx" type="number" min="0"></div><div><label for="cl">حد الاستخدام</label><input id="cl" type="number" min="0"></div><div><label for="ce">تاريخ الانتهاء</label><input id="ce" type="date"></div></div><button class="btn" style="margin-top:14px">إنشاء</button></form>
+ <div class="panel">${S.coupons.length?S.coupons.map(c=>`<div class="line"><span><strong>${esc(c.code)}</strong> — ${c.type==="pct"?c.value+"%":egp(c.value)} · استُخدم ${cuse(c.code)}${c.limit?"/"+c.limit:""}</span><button class="btn sm bad" data-act="cdel" data-id="${esc(c.code)}">حذف</button></div>`).join(""):empty("لا توجد كوبونات","أنشئ أول كوبون من النموذج.")}</div>`;
+ if(tab==="stats"){const done=S.orders.filter(o=>o.status==="COMPLETED");const rev=done.reduce((a,o)=>a+o.total,0);const plat=Math.round(rev*S.commission/100);
+ body=`<div class="grid">${[["الإيرادات",egp(rev)],["طلبات مكتملة",done.length],["كل الطلبات",S.orders.length],["المذكرات",S.notes.length],["عمولة المنصة ("+S.commission+"%)",egp(plat)],["مستحق للمدرسين",egp(rev-plat)]].map(([a,b])=>`<div class="panel" style="margin:0"><div class="meta">${a}</div><div class="tot">${b}</div></div>`).join("")}</div>`}
+ if(tab==="settings")body=`<form class="panel" id="sf2"><label for="cm2">نسبة عمولة المنصة %</label><input id="cm2" type="number" min="0" max="100" value="${S.commission}"><label for="pn">رقم التحويل</label><input id="pn" value="${esc(S.payNum)}" inputmode="tel" pattern="01[0-9]{9}" required><label for="cp">كلمة المرور الحالية (لو هتغيّرها)</label><input id="cp" type="password" autocomplete="current-password"><label for="np">كلمة مرور جديدة (8 أحرف على الأقل، اتركها فارغة لو مش هتغيّر)</label><input id="np" type="password" minlength="8" autocomplete="new-password"><label for="np2">تأكيد الكلمة الجديدة</label><input id="np2" type="password" autocomplete="new-password"><label for="wn">رقم واتساب الإدارة (لاستلام صور التحويل)</label><input id="wn" value="${esc(S.waNum)}" inputmode="tel" pattern="01[0-9]{9}" placeholder="01xxxxxxxxx"><label for="py">تعليمات الدفع (تظهر للعميل)</label><textarea id="py">${esc(S.pay)}</textarea><button class="btn" style="margin-top:14px">حفظ</button></form><div class="panel"><h3 style="margin:0">نسخة احتياطية</h3><p class="meta">تشمل المذكرات والطلبات والكوبونات والإعدادات. لا تشمل ملفات PDF ولا صور التحويل.</p><button type="button" class="btn sec" data-act="bk">تصدير</button> <label class="btn sec" style="margin:0">استيراد<input type="file" accept="application/json" data-restore hidden></label></div>`;
+ return`<section class="pg"><h2>لوحة الإدارة</h2><div class="tabs">${tabs.map(([k,l])=>`<a class="chip ${tab===k?"on":""}" href="#/admin?tab=${k}">${l}</a>`).join("")}</div>${body}${tab==="orders"&&adminOrders().length>lim.orders?moreBtn("orders",adminOrders().length-lim.orders):""}${tab==="notes"&&S.notes.length>lim.notes?moreBtn("notes",S.notes.length-lim.notes):""}</section>`};
+// ---------- Router ----------
+function route(){const[p,qs]=(location.hash.slice(1)||"/").split("?");const q=Object.fromEntries(new URLSearchParams(qs||""));
+ const name={"/":"home","/cart":"cart","/orders":"orders","/request":"request","/library":"library","/favorites":"favs","/admin":"admin","/auth":"auth"}[p]||"home";
+ const key=p+"?"+(qs||"");if(key!==route.k)lim={home:12,orders:15,notes:15};$("#app").classList.toggle("anim",key!==route.k);route.k=key;$("#app").innerHTML=V[name](q);if($("#app").classList.contains("anim"))$("#app").querySelectorAll(".card,.panel,.empty").forEach((el,i)=>el.style.animationDelay=Math.min(i,12)*50+"ms");
+ $("#nav").innerHTML=[["/","المذكرات"],...(CLOUD&&S.admin?[["/admin","الإدارة"]]:[]),...(CLOUD&&!SES?[["/auth","دخول"]]:[]),["/library","مكتبتي"],["/favorites","المفضلة"],["/orders","طلباتي"],["/request","اطلب مذكرة"],["/cart","السلة"+(S.cart.length?`<span class="cnt">${S.cart.length}</span>`:"")]].map(([h,l])=>`<a href="#${h}" class="${p===h?"on":""}"${p===h?' aria-current="page"':""}>${l}</a>`).join("");
+ $("#roleBtn").textContent=CLOUD?(SES?"خروج":"دخول"):(S.admin?"خروج من الإدارة":"الإدارة");document.title=name==="home"?"منصة المذكرات الذكية — مذكرتك… مذاكرتك أذكى":"منصة المذكرات الذكية";hydrate();if($("#app").classList.contains("anim")){const h=$("#app h1,#app h2");if(h){h.tabIndex=-1;h.focus({preventScroll:true})}}}
+function hydrate(){document.querySelectorAll("img[data-pid]").forEach(async i=>{if(i.getAttribute("src"))return;if(CLOUD){try{const o=S.orders.find(x=>x.id===i.dataset.pid);if(o?.proof_path&&sb){const r=await sb.storage.from("proofs").createSignedUrl(o.proof_path,600);if(r.data?.signedUrl)i.src=r.data.signedUrl}}catch{}return}try{const b=await fget("proof:"+i.dataset.pid);if(b)i.src=URL.createObjectURL(b)}catch{}})}
+const fput=async(k,v)=>{mem.set(k,v);try{await _fput(k,v)}catch{toast("تعذر حفظ الملف بشكل دائم في هذا المتصفح. سيبقى متاحًا حتى تحديث الصفحة","err")}};
+const fget=async k=>{try{const r=await _fget(k);if(r)return r}catch{}return mem.get(k)};
+async function checkPdf(f){if(f.size>15e6)throw"الحد الأقصى للملف 15MB";if(f.type!=="application/pdf")throw"الملف يجب أن يكون PDF";if(new TextDecoder().decode(await f.slice(0,5).arrayBuffer())!=="%PDF-")throw"الملف ليس PDF صالحًا"}
+async function openFile(id,dl){if(CLOUD)return cloudOpen(id,dl);const n=S.notes.find(x=>x.id===id);if(!n)return;
+ if(!S.library.includes(id)&&!S.admin){toast("لا تملك هذه المذكرة","err");return}
+ const w=dl?null:window.open("","_blank");let f;try{f=await fget(id)}catch{}
+ if(!f&&n.src){try{const r=await fetch(n.src);if(r.ok)f=await r.blob()}catch{}}
+ if(!f){w?.close();if(n.hasFile){n.hasFile=false;save()}toast(n.hasFile?"الملف غير موجود على هذا الجهاز. ارفعه من لوحة الإدارة":"لم يُرفق ملف لهذه المذكرة بعد","err");return}
+ const u=URL.createObjectURL(f);setTimeout(()=>URL.revokeObjectURL(u),6e4);if(w){w.location.href=u;return}const a=document.createElement("a");a.href=u;a.download=n.title+".pdf";a.rel="noopener";a.click()}
+function readSmall(file,max=2e6){return new Promise((res,rej)=>{if(file.size>max)return rej("الحد الأقصى للملف 15MB");const r=new FileReader();r.onload=()=>res(file);r.onerror=()=>rej("تعذر قراءة الملف");r.readAsArrayBuffer(file)})}
+// ---------- Events ----------
+document.addEventListener("click",e=>{
+ const chip=e.target.closest("[data-stage]");if(chip){const q=new URLSearchParams(location.hash.split("?")[1]||"");chip.dataset.stage?q.set("stage",chip.dataset.stage):q.delete("stage");location.hash="/?"+q;return}
+ const b=e.target.closest("[data-act]");if(!b)return;const id=b.dataset.id,a=b.dataset.act;if(["ok","no","tog","del","cdel","rqok","rqno","rqdel","bk","refund"].includes(a)&&!S.admin){toast("غير مصرح","err");return}
+ if(CLOUD&&CA.has(a)){cloudAct(a,id,b);return}
+ if(a==="add"){if(!S.cart.includes(id)){S.cart.push(id);(S.lock=S.lock||{})[id]=priceOf(id);save();toast("أُضيفت للسلة")}else toast("موجودة في السلة بالفعل");route()}
+ if(a==="rm"){S.cart=S.cart.filter(x=>x!==id);if(S.lock)delete S.lock[id];save();route()}
+ if(a==="fav"){S.fav=S.fav.includes(id)?S.fav.filter(x=>x!==id):[...S.fav,id];save();route()}
+ if(a==="det"){const n=S.notes.find(x=>x.id===id);alert(`${n.title}\n\n${n.description}\n\nالمدرس: ${n.teacher}\nالمرحلة: ${n.stage} — المادة: ${n.subject}\nالصفحات: ${n.pages}`)}
+ if(a==="copy"){navigator.clipboard?.writeText(S.payNum).then(()=>toast("تم نسخ الرقم"),()=>toast("انسخ الرقم يدويًا","err"))}
+ if(a==="zoom"){const d=document.createElement("div");d.className="ov";d.setAttribute("role","dialog");d.setAttribute("aria-modal","true");d.setAttribute("aria-label","صورة التحويل");d.tabIndex=-1;d.innerHTML='<img alt="صورة التحويل">';d.querySelector("img").src=b.src;const close=()=>{d.remove();b.focus?.()};d.onclick=close;d.onkeydown=ev=>{if(ev.key==="Escape"||ev.key==="Enter"||ev.key==="Tab"){ev.preventDefault();close()}};document.body.append(d);d.focus()}
+ if(a==="open")openFile(id,false);if(a==="dl")openFile(id,true);
+ if(a==="cancel"){const o=S.orders.find(x=>x.id===id);if(o&&confirm("إلغاء الطلب؟")&&move(o,"CANCELLED")){save();route()}}
+ if(a==="ok"){const o=S.orders.find(x=>x.id===id);if(confirm("اعتماد الدفع وإضافة المذكرات لمكتبة الطالب؟")&&move(o,"COMPLETED")){o.items.forEach(i=>{if(!S.library.includes(i))S.library.push(i)});save();toast("تم اعتماد الدفع");route()}}
+ if(a==="no"){const o=S.orders.find(x=>x.id===id);const r=prompt("سبب الرفض:");if(r&&move(o,"REJECTED")){o.reason=r;save();route()}}
+ if(a==="tog"){const n=S.notes.find(x=>x.id===id);if(n.status!=="PUBLISHED"&&!n.hasFile){toast("ارفع ملف PDF قبل النشر","err");return}n.status=n.status==="PUBLISHED"?"UNPUBLISHED":"PUBLISHED";log("مذكرة",n.title+" ← "+(n.status==="PUBLISHED"?"منشورة":"موقوفة"));save();route()}
+ if(a==="del"){if(S.orders.some(o=>o.items.includes(id))||S.library.includes(id)){toast("المذكرة مرتبطة بطلبات أو مشترين. استخدم «إيقاف» بدل الحذف","err");return}if(!confirm("حذف المذكرة نهائيًا؟"))return;log("حذف مذكرة",S.notes.find(x=>x.id===id)?.title);S.notes=S.notes.filter(x=>x.id!==id);S.cart=S.cart.filter(x=>x!==id);S.fav=S.fav.filter(x=>x!==id);if(save())fdel(id);route()}
+ if(a==="cdel"&&confirm("حذف الكوبون؟")){log("حذف كوبون",id);S.coupons=S.coupons.filter(c=>c.code!==id);save();route()}
+ if(a==="wa"){const o=S.orders.find(x=>x.id===id);const txt=`طلب #${o.num}\nالاسم: ${o.name}\nالهاتف: ${o.phone}\nالإجمالي: ${egp(o.total)}\nمرفق صورة التحويل`;
+  (async()=>{try{const blob=o.proofImg?await(await fetch(o.proofImg)).blob():await fget("proof:"+o.id);const f=new File([blob],`transfer-${o.num}.jpg`,{type:"image/jpeg"});if(navigator.canShare?.({files:[f]})){await navigator.share({files:[f],text:txt});return}}catch(er){if(er.name==="AbortError")return}
+   if(!S.waNum){toast("رقم واتساب الإدارة غير مضبوط. اطلب من الإدارة ضبطه","err");return}
+   open(`https://wa.me/${waIntl(S.waNum)}?text=${encodeURIComponent(txt)}`,"_blank","noopener");toast("أرفق صورة التحويل يدويًا داخل المحادثة")})()}
+ if(a==="rqok"||a==="rqno"){const r=S.requests.find(x=>x.id===id);const m=prompt("رد للطالب (اختياري):");if(m===null)return;r.status=a==="rqok"?"DONE":"NO";r.reply=m.trim();log("طلب طالب: "+r.subject,a==="rqok"?"تمت الإضافة":"غير متاح");save();route()}
+ if(a==="rqdel"&&confirm("حذف الطلب؟")){log("حذف طلب طالب","");S.requests=S.requests.filter(x=>x.id!==id);save();route()}
+ if(a==="eye"){const i=$("#ap");i.type=i.type==="password"?"text":"password";b.textContent=i.type==="password"?"إظهار":"إخفاء"}
+ if(a==="more"){lim[b.dataset.k]+=12;route();return}
+ if(a==="refund"){const o=S.orders.find(x=>x.id===id);const r=prompt("سبب الاسترجاع:");if(r&&move(o,"REFUNDED")){o.reason=r;const keep=new Set(S.orders.filter(x=>x.status==="COMPLETED").flatMap(x=>x.items));S.library=S.library.filter(x=>!o.items.includes(x)||keep.has(x));save();route()}}
+ if(a==="bk"){const{admin,adminHash,...d}=S;const u=URL.createObjectURL(new Blob([JSON.stringify(d)],{type:"application/json"}));const l=document.createElement("a");l.href=u;l.download="smartnotes-backup-"+new Date().toISOString().slice(0,10)+".json";l.click();setTimeout(()=>URL.revokeObjectURL(u),6e4)}
+ if(b.id==="applyC"){draft={nm:$("#nm")?.value,ph:$("#ph")?.value,em:$("#em")?.value};location.hash="/cart?code="+encodeURIComponent($("#cc").value)}
+});
+$("#roleBtn").addEventListener("click",()=>{if(CLOUD){if(SES)sb.auth.signOut().then(()=>go("/"));else go("/auth");return}const to=S.admin?"#/":"#/admin";if(S.admin){S.admin=false;save()}if(location.hash===to)route();else location.hash=to});
+// ===================== Cloud mode (Supabase) =====================
+let sb=null,SES=null;const QC={};
+const go=p=>{if(location.hash==="#"+p)route();else location.hash=p};
+const AR={"login required":"سجّل دخولك أولًا","invalid items":"المذكرات المختارة غير متاحة أو مملوكة بالفعل","invalid coupon":"الكوبون غير صالح","coupon expired":"انتهت صلاحية الكوبون","below minimum":"الطلب أقل من الحد الأدنى للكوبون","coupon exhausted":"تم استنفاد الكوبون","invalid total":"إجمالي الطلب غير صالح","invalid data":"بيانات الطلب غير صحيحة","transition not allowed":"انتقال غير مسموح","not allowed":"غير مسموح","order not found":"الطلب غير موجود"};
+function em(er){const m=String(er?.message||er||"");for(const k in AR)if(m.includes(k))return AR[k];if(/foreign key|violates/i.test(m))return"المذكرة مرتبطة بطلبات. استخدم «إيقاف» بدل الحذف";if(/Invalid login/i.test(m))return"الإيميل أو كلمة المرور غير صحيحة";if(/already registered/i.test(m))return"الإيميل مسجّل بالفعل";return m||"حدث خطأ"}
+const must=r=>{if(r.error)throw em(r.error);return r.data};
+const snap=()=>{if($("#nm"))draft={nm:$("#nm").value,ph:$("#ph")?.value,em:$("#em")?.value}};
+async function loadSb(){if(window.supabase)return;await new Promise((res,rej)=>{const t=document.createElement("script");t.src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js";t.onload=res;t.onerror=()=>rej("تعذر تحميل مكتبة Supabase");document.head.append(t)})}
+async function initCloud(){try{await loadSb();sb=window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
+ sb.auth.onAuthStateChange((ev,ss)=>{SES=ss;if(ev==="SIGNED_IN"||ev==="SIGNED_OUT")setTimeout(refresh,0)});
+ const{data}=await sb.auth.getSession();SES=data.session;await refresh()}catch(er){toast(em(er),"err")}}
+async function refresh(){if(!sb)return;try{
+ const[nt,st]=await Promise.all([sb.from("notes").select("*").order("created_at",{ascending:false}),sb.from("settings").select("*").eq("id",1).maybeSingle()]);
+ S.notes=must(nt).map(n=>({id:n.id,title:n.title,description:n.description||"",teacher:n.teacher||"",pages:n.pages||0,stage:n.stage||"",subject:n.subject||"",price:+n.price,old:+n.old_price||0,status:n.status,hasFile:!!n.file_path,file_path:n.file_path,at:Date.parse(n.created_at)}));
+ const s0=must(st);if(s0){S.payNum=s0.pay_num;if(s0.pay_text)S.pay=s0.pay_text;S.waNum=s0.wa_num||"";S.commission=+s0.commission}
+ if(SES){const uid=SES.user.id;
+  const[pf,od,lb,fv,rq]=await Promise.all([sb.from("profiles").select("is_admin").eq("id",uid).maybeSingle(),sb.from("orders").select("*,order_items(note_id,title,price)").order("created_at",{ascending:false}),sb.from("library").select("note_id").eq("user_id",uid),sb.from("favorites").select("note_id").eq("user_id",uid),sb.from("requests").select("*").order("created_at",{ascending:false})]);
+  S.admin=!!must(pf)?.is_admin;
+  S.orders=must(od).map(o=>({id:o.id,num:String(o.num),status:o.status,items:(o.order_items||[]).map(i=>i.note_id),lines:(o.order_items||[]).map(i=>({id:i.note_id,title:i.title,price:+i.price})),sub:+o.subtotal,disc:+o.discount,total:+o.total,coupon:o.coupon,name:o.name,phone:o.phone,email:o.email,at:Date.parse(o.created_at),proof_path:o.proof_path,hasProof:!!o.proof_path,proof:o.proof_path?o.proof_path.split("/").pop():"",sentAt:o.sent_at?Date.parse(o.sent_at):0,hist:o.hist||[],reason:o.reason}));
+  S.library=must(lb).map(x=>x.note_id);S.fav=must(fv).map(x=>x.note_id);
+  S.requests=must(rq).map(r=>({id:r.id,status:r.status,name:r.name,phone:r.phone,stage:r.stage||"",subject:r.subject||"",details:r.details,reply:r.reply||"",at:Date.parse(r.created_at)}));
+  if(S.admin){const[cp,au]=await Promise.all([sb.from("coupons").select("*"),sb.from("audit").select("*").order("at",{ascending:false}).limit(300)]);
+   S.coupons=must(cp).map(c=>({code:c.code,type:c.type,value:+c.value,min:+c.min_total,max:+c.max_discount,limit:c.usage_limit,expires:c.expires||"",active:c.active}));
+   S.audit=must(au).reverse().map(a=>({at:Date.parse(a.at),act:a.act,d:a.detail||""}));
+   sb.rpc("expire_pending").then(()=>{},()=>{})}
+ }else{S.admin=false;S.orders=[];S.library=[];S.fav=[];S.requests=[];S.coupons=[];S.audit=[]}
+ sanitize();route()}catch(er){toast(em(er),"err")}}
+function cloudCalc(code){const items=validCart(),sub=items.reduce((a,id)=>a+priceOf(id),0);code=(code||"").trim().toUpperCase();
+ const base={sub,disc:0,total:sub,err:"",c:null};if(!code)return base;if(!SES)return{...base,err:"سجّل دخولك لتفعيل الكوبون"};
+ const k=code+"|"+items.slice().sort().join(","),q=QC[k];
+ if(!q){QC[k]="loading";sb.rpc("quote",{p_items:items,p_code:code}).then(r=>{QC[k]=r.error?{err:em(r.error)}:r.data;snap();route()});return{...base,err:"جارٍ التحقق من الكوبون…"}}
+ if(q==="loading")return{...base,err:"جارٍ التحقق من الكوبون…"};
+ if(q.err)return{...base,err:AR[q.err]||q.err};
+ return{sub:+q.sub,disc:+q.disc,total:+q.total,err:"",c:{code}}}
+const CA=new Set(["tog","del","ok","no","refund","cancel","fav","cdel","rqok","rqno","rqdel"]);
+async function cloudAct(a,id,b){try{
+ if(a==="fav"){if(!SES){toast("سجّل دخولك لحفظ المفضلة","err");go("/auth");return}
+  if(S.fav.includes(id))must(await sb.from("favorites").delete().eq("user_id",SES.user.id).eq("note_id",id));else must(await sb.from("favorites").insert({user_id:SES.user.id,note_id:id}))}
+ else if(a==="tog"){const n=S.notes.find(x=>x.id===id);if(n.status!=="PUBLISHED"&&!n.hasFile){toast("ارفع ملف PDF قبل النشر","err");return}must(await sb.from("notes").update({status:n.status==="PUBLISHED"?"UNPUBLISHED":"PUBLISHED"}).eq("id",id))}
+ else if(a==="del"){const n=S.notes.find(x=>x.id===id);if(!confirm("حذف المذكرة نهائيًا؟"))return;must(await sb.from("notes").delete().eq("id",id));if(n?.file_path)await sb.storage.from("note-files").remove([n.file_path])}
+ else if(a==="ok"){if(!confirm("اعتماد الدفع وإضافة المذكرات لمكتبة الطالب؟"))return;must(await sb.rpc("admin_set_order",{p_order:id,p_to:"COMPLETED"}))}
+ else if(a==="no"){const r=prompt("سبب الرفض:");if(!r)return;must(await sb.rpc("admin_set_order",{p_order:id,p_to:"REJECTED",p_reason:r}))}
+ else if(a==="refund"){const r=prompt("سبب الاسترجاع:");if(!r)return;must(await sb.rpc("admin_set_order",{p_order:id,p_to:"REFUNDED",p_reason:r}))}
+ else if(a==="cancel"){if(!confirm("إلغاء الطلب؟"))return;must(await sb.rpc("cancel_order",{p_order:id}))}
+ else if(a==="cdel"){if(!confirm("حذف الكوبون؟"))return;must(await sb.from("coupons").delete().eq("code",id))}
+ else if(a==="rqok"||a==="rqno"){const m=prompt("رد للطالب (اختياري):");if(m===null)return;must(await sb.from("requests").update({status:a==="rqok"?"DONE":"NO",reply:m.trim()}).eq("id",id))}
+ else if(a==="rqdel"){if(!confirm("حذف الطلب؟"))return;must(await sb.from("requests").delete().eq("id",id))}
+ await refresh()}catch(er){toast(String(er),"err")}}
+const CF=new Set(["nf","cf","co","rf","sf2","authf"]);
+async function cloudForm(f,v){try{
+ if(f.id==="authf"){const email=v("ae").trim(),password=v("apw");
+  if(f.dataset.mode==="up"){const r=await sb.auth.signUp({email,password,options:{data:{full_name:v("an").trim(),phone:v("aph")}}});if(r.error)throw em(r.error);toast(r.data.session?"تم إنشاء الحساب":"تم إنشاء الحساب. فعّل إيميلك ثم سجّل الدخول")}
+  else{must(await sb.auth.signInWithPassword({email,password}));toast("تم تسجيل الدخول")}
+  go("/");return}
+ if(f.id==="nf"){const pdf=$("#pdf").files[0];if(!pdf)throw"ارفع ملف PDF أولًا";await checkPdf(pdf);const id=crypto.randomUUID(),path=id+".pdf";
+  must(await sb.storage.from("note-files").upload(path,pdf,{contentType:"application/pdf"}));
+  const r=await sb.from("notes").insert({id,title:v("t").trim(),description:v("d").trim(),teacher:v("tc").trim(),pages:+v("pg"),stage:v("stg"),subject:v("sb"),price:+v("pr"),old_price:+v("op")||0,status:"PUBLISHED",file_path:path});
+  if(r.error){await sb.storage.from("note-files").remove([path]);throw em(r.error)}toast("تم نشر المذكرة")}
+ else if(f.id==="cf"){must(await sb.from("coupons").insert({code:v("cd").trim().toUpperCase(),type:v("ct"),value:+v("cv"),min_total:+v("cm")||0,max_discount:+v("cx")||0,usage_limit:+v("cl")||0,expires:v("ce")||null,active:true}));toast("تم إنشاء الكوبون")}
+ else if(f.id==="co"){if(!SES){toast("سجّل دخولك لإتمام الطلب","err");go("/auth");return}
+  const typed=($("#cc")?.value||"").trim().toUpperCase();if(typed!==(f.dataset.code||"")){toast("اضغط «تطبيق» لتفعيل الكوبون أولًا","err");return}
+  const items=validCart();if(!items.length){toast("لا توجد عناصر صالحة","err");return}
+  must(await sb.rpc("create_order",{p_items:items,p_code:f.dataset.code||null,p_name:v("nm").trim(),p_phone:v("ph"),p_email:v("em")||null}));
+  S.cart=[];S.lock={};draft={};save();toast("تم إنشاء الطلب. ارفع إثبات الدفع من صفحة طلباتي");await refresh();go("/orders");return}
+ else if(f.id==="rf"){if(!SES){toast("سجّل دخولك لإرسال طلب","err");go("/auth");return}
+  must(await sb.from("requests").insert({name:v("rqn").trim(),phone:v("rqp"),stage:v("rqst"),subject:v("rqsb"),details:v("rqd").trim()}));toast("تم إرسال طلبك للإدارة")}
+ else if(f.id==="sf2"){if(!S.admin)return;must(await sb.from("settings").update({commission:Math.min(100,Math.max(0,+v("cm2"))),pay_text:v("py").trim(),pay_num:v("pn").trim(),wa_num:v("wn").trim()}).eq("id",1));toast("تم الحفظ")}
+ await refresh()}catch(er){toast(String(er),"err")}}
+async function cloudFile(el){try{
+ if(el.dataset.pdf){const id=el.dataset.pdf,f=el.files[0];if(!f||!S.admin)return;await checkPdf(f);const n=S.notes.find(x=>x.id===id);
+  if(n.hasFile&&S.orders.some(o=>o.items.includes(id))&&!confirm("هذه المذكرة تم بيعها. الاستبدال سيغيّر الملف عند كل من اشتراها. متابعة؟")){el.value="";return}
+  const path=n.file_path||id+".pdf";must(await sb.storage.from("note-files").upload(path,f,{contentType:"application/pdf",upsert:true}));if(!n.file_path)must(await sb.from("notes").update({file_path:path}).eq("id",id));toast("تم حفظ الملف")}
+ else{const id=el.dataset.proof,file=el.files[0];if(!file||!SES)return;if(file.size>15e6)throw"حجم الصورة كبير (الحد 15MB)";toast("جارٍ ضغط الصورة…");const blob=await compressImg(file);const path=`${SES.user.id}/${id}-${Date.now()}.jpg`;
+  must(await sb.storage.from("proofs").upload(path,blob,{contentType:"image/jpeg"}));must(await sb.rpc("submit_proof",{p_order:id,p_path:path}));toast("تم إرسال صورة التحويل للإدارة وهي قيد المراجعة")}
+ await refresh()}catch(er){toast(String(er),"err");el.value=""}}
+async function cloudOpen(id,dl){const n=S.notes.find(x=>x.id===id);if(!n||!n.file_path){toast("لم يُرفق ملف لهذه المذكرة بعد","err");return}const w=dl?null:window.open("","_blank");
+ try{const r=await sb.storage.from("note-files").createSignedUrl(n.file_path,300);if(r.error||!r.data?.signedUrl)throw r.error||"تعذر فتح الملف";if(w)w.location.href=r.data.signedUrl;else{const a=document.createElement("a");a.href=r.data.signedUrl;a.download=n.title+".pdf";a.click()}}catch(er){w?.close();toast(em(er),"err")}}
+V.auth=q=>{const up=q.m==="up";return`<section class="pg"><div class="panel" style="max-width:440px;margin:auto"><h2>${up?"إنشاء حساب":"تسجيل الدخول"}</h2><form id="authf" data-mode="${up?"up":"in"}">${up?`<label for="an">الاسم</label><input id="an" required minlength="3"><label for="aph">الهاتف</label><input id="aph" required inputmode="tel" pattern="01[0-9]{9}" title="رقم مصري من 11 رقمًا">`:""}<label for="ae">الإيميل</label><input id="ae" type="email" required dir="ltr" autocomplete="email"><label for="apw">كلمة المرور</label><input id="apw" type="password" required minlength="8" dir="ltr" autocomplete="${up?"new-password":"current-password"}"><button class="btn" style="width:100%;margin-top:14px">${up?"إنشاء الحساب":"دخول"}</button></form><p class="meta" style="text-align:center;margin-top:12px"><a href="#/auth?m=${up?"in":"up"}">${up?"عندي حساب بالفعل":"إنشاء حساب جديد"}</a></p></div></section>`};
+
+function compressImg(file){return new Promise((res,rej)=>{if(!file.type.startsWith("image/"))return rej("الملف يجب أن يكون صورة");const img=new Image(),u=URL.createObjectURL(file);img.onload=()=>{const k=Math.min(1,1400/Math.max(img.width,img.height)),c=document.createElement("canvas");c.width=Math.round(img.width*k);c.height=Math.round(img.height*k);c.getContext("2d").drawImage(img,0,0,c.width,c.height);URL.revokeObjectURL(u);c.toBlob(b=>b?res(b):rej("تعذر ضغط الصورة"),"image/jpeg",.85)};img.onerror=()=>rej("تعذر قراءة الصورة");img.src=u})}
+document.addEventListener("change",async e=>{if(CLOUD&&(e.target.dataset?.proof||e.target.dataset?.pdf)){cloudFile(e.target);return}if(e.target.dataset?.restore!==undefined&&e.target.files[0]&&S.admin){try{const d=JSON.parse(await e.target.files[0].text());if(!d||!Array.isArray(d.notes))throw 0;if(!confirm("سيتم استبدال كل البيانات الحالية. متابعة؟")){e.target.value="";return}Object.assign(S,d,{admin:true,adminHash:S.adminHash});sanitize();log("استعادة نسخة احتياطية","");save();toast("تمت الاستعادة");route()}catch{toast("ملف النسخة غير صالح","err")}e.target.value="";return}const pf=e.target.dataset?.pdf;if(pf&&e.target.files[0]&&S.admin){try{const f=e.target.files[0];await checkPdf(f);const nn=S.notes.find(x=>x.id===pf);if(nn.hasFile&&S.orders.some(o=>o.items.includes(pf))&&!confirm("هذه المذكرة تم بيعها. الاستبدال سيغيّر الملف عند كل من اشتراها. متابعة؟")){e.target.value="";return}await fput(pf,f);nn.hasFile=true;save();toast("تم حفظ الملف");route()}catch(er){toast(String(er),"err");e.target.value=""}return}const id=e.target.dataset?.proof;if(!id||!e.target.files[0])return;
+ try{const file=e.target.files[0];if(file.size>15e6)throw"حجم الصورة كبير (الحد 15MB)";toast("جارٍ ضغط الصورة…");const data=await compressImg(file);const o=S.orders.find(x=>x.id===id);await fput("proof:"+o.id,data);const prev=o.status;
+  if(move(o,"PAYMENT_REVIEW")){o.proof=file.name;o.hasProof=true;delete o.proofImg;o.sentAt=Date.now();if(!save()){o.status=prev;o.hist.pop();delete o.sentAt;toast("لم يتم حفظ الإرسال. جرّب مرة أخرى","err");return}toast("تم إرسال صورة التحويل للإدارة وهي قيد المراجعة");route()}}catch(er){toast(er,"err");e.target.value=""}});
+async function onForm(f){const v=id=>f.querySelector("#"+id)?.value;
+ if(CLOUD&&CF.has(f.id)){const bt=f.querySelector("button:not([type=button])");if(bt)bt.disabled=true;try{await cloudForm(f,v)}finally{if(bt)bt.disabled=false}return}
+ if(["nf","cf","sf2"].includes(f.id)&&!S.admin)return;
+ if(f.id==="sf"){location.hash="/?q="+encodeURIComponent(v("q"))}
+ if(f.id==="af"){try{if(Date.now()<lockUntil){toast("محاولات كثيرة، انتظر دقيقة","err");return}const pw=pwNorm(v("ap"));const h=await sha(pw);if(h!==(S.adminHash||ADMIN_HASH)){if(++bad>=5){bad=0;lockUntil=Date.now()+60000}toast(`كلمة المرور غير صحيحة (قرأت ${pw.length} حروف)`,"err");return}S.admin=true;idle();log("دخول الإدارة","");save();route()}catch(er){toast("خطأ: "+(er?.message||er),"err")}}
+ if(f.id==="co"){const btn=$("#coBtn");if(btn.disabled)return;btn.disabled=true;const c=calc(f.dataset.code);const typed=($("#cc")?.value||"").trim().toUpperCase();if(typed!==(f.dataset.code||"")){toast("اضغط «تطبيق» لتفعيل الكوبون أولًا","err");btn.disabled=false;return}
+  const items=validCart();if(!items.length){toast("لا توجد عناصر صالحة","err");btn.disabled=false;return}
+  if(f.dataset.code&&c.err){toast(c.err,"err");btn.disabled=false;return}
+  if(c.total<=0){toast("إجمالي الطلب غير صالح","err");btn.disabled=false;return}
+  const o={id:uid(),num:String(1001+Math.max(0,...S.orders.map(x=>x.num-1000))),status:"PENDING",items,lines:items.map(i=>{const n=S.notes.find(x=>x.id===i);return{id:i,title:n.title,price:priceOf(i)}}),hist:[{s:"PENDING",at:Date.now()}],sub:c.sub,disc:c.disc,total:c.total,coupon:c.c?.code||null,name:v("nm"),phone:v("ph"),email:v("em"),at:Date.now()};
+  S.orders.push(o);const oldCart=S.cart;S.cart=[];if(!save()){S.orders.pop();S.cart=oldCart;toast("لم يتم حفظ الطلب (التخزين غير متاح). حاول مرة أخرى","err");btn.disabled=false;return}draft={};S.lock={};toast("تم إنشاء الطلب. ارفع إثبات الدفع من صفحة طلباتي");location.hash="/orders"}
+ if(f.id==="nf"){try{const pdf=$("#pdf").files[0];const id=uid();if(!pdf)throw"ارفع ملف PDF أولًا";await checkPdf(pdf);await fput(id,pdf);
+  S.notes.push({id,title:v("t").trim(),description:v("d").trim(),teacher:v("tc").trim(),pages:+v("pg"),stage:v("stg"),subject:v("sb"),price:+v("pr"),old:+v("op")||0,status:"PUBLISHED",hasFile:true,at:Date.now()});log("إضافة مذكرة",S.notes.at(-1).title);const ok=save();toast(ok?"تم نشر المذكرة":"تم النشر، لكن لن يُحفظ بعد تحديث الصفحة (التخزين غير متاح في هذا المتصفح)",ok?undefined:"err");route()}catch(er){toast(er,"err")}}
+ if(f.id==="cf"){const code=v("cd").toUpperCase();if(S.coupons.some(c=>c.code===code)){toast("الكود مستخدم","err");return}
+  S.coupons.push({code,type:v("ct"),value:+v("cv"),min:+v("cm")||0,max:+v("cx")||0,limit:+v("cl")||0,expires:v("ce"),active:true});log("إنشاء كوبون",code);save();toast("تم إنشاء الكوبون");route()}
+ if(f.id==="of"&&S.admin){af={q:v("oq").trim(),s:v("os")};lim.orders=15;route()}
+ if(f.id==="rf"){S.requests.push({id:uid(),status:"NEW",name:v("rqn").trim(),phone:v("rqp"),stage:v("rqst"),subject:v("rqsb"),details:v("rqd").trim(),at:Date.now()});save();toast("تم إرسال طلبك للإدارة");route()}
+ if(f.id==="sf2"){const np=v("np");if(np){if(np.length<8||np!==v("np2")){toast("الكلمة الجديدة 8 أحرف على الأقل ولازم تتطابق مع التأكيد","err");return}if(await sha(pwNorm(v("cp")||""))!==(S.adminHash||ADMIN_HASH)){toast("كلمة المرور الحالية غير صحيحة","err");return}S.adminHash=await sha(pwNorm(np));log("تغيير كلمة المرور","")}S.commission=Math.min(100,Math.max(0,+v("cm2")));S.pay=v("py").trim();S.payNum=v("pn").trim();S.waNum=v("wn").trim();log("تعديل الإعدادات","");save();toast("تم الحفظ")}
+}
+document.addEventListener("submit",e=>{e.preventDefault();onForm(e.target)});
+document.addEventListener("click",e=>{const bt=e.target.closest("form button:not([type=button])");if(!bt||bt.disabled||!bt.form)return;e.preventDefault();if(bt.form.reportValidity())onForm(bt.form)},true);
+let idleT;function idle(){clearTimeout(idleT);if(S.admin&&!CLOUD)idleT=setTimeout(()=>{if(!S.admin)return;S.admin=false;toast("انتهت جلسة الإدارة لعدم النشاط","err");route()},15*6e4)}
+["click","keydown","pointerdown"].forEach(ev=>addEventListener(ev,idle,true));
+document.addEventListener("keydown",e=>{if((e.key==="Enter"||e.key===" ")&&e.target.matches?.("img[data-act]")){e.preventDefault();e.target.click()}});
+$("#themeBtn").addEventListener("click",()=>{const r=document.documentElement,cur=r.dataset.theme||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light"),nx=cur==="dark"?"light":"dark";r.dataset.theme=nx;try{localStorage.setItem("smartnotes.theme",nx)}catch{}});
+try{const t=localStorage.getItem("smartnotes.theme");if(t)document.documentElement.dataset.theme=t}catch{}
+addEventListener("storage",e=>{if(e.key===KEY&&!CLOUD){const a=S.admin;load();sanitize();S.admin=a;route()}});
+addEventListener("error",()=>toast("حدث خطأ غير متوقع","err"));addEventListener("unhandledrejection",()=>toast("حدث خطأ غير متوقع","err"));
+document.addEventListener("click",e=>{const a=e.target.closest?.('a[href^="#/"]');if(!a||e.ctrlKey||e.metaKey||e.shiftKey||a.target==="_blank")return;e.preventDefault();const path=a.getAttribute("href").slice(1);if(location.hash==="#"+path)route();else location.hash=path},true);
+addEventListener("hashchange",()=>{route();scrollTo(0,0)});
+$("#yr").textContent=new Date().getFullYear();load();sanitize();seedNotes();if(!CLOUD)expire();fixPay();S.admin=false;route();if(CLOUD){document.body.classList.add("cloud");initCloud()}
+</script>
+</body>
+</html>
